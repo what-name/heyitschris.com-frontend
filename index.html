@@ -14,29 +14,30 @@
 
     <link rel="stylesheet" href="css/icomoon.css">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/scrolldown-indicator.css">
 </head>
 
 <body>
     <div class="page">
-
 
         <div id="colorlib-page">
             <header>
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12">
-                            <div class="colorlib-navbar-brand">
-                                <!-- SCROLL ICON -->
-                                <!-- <div class="scroll">
-                            <a href="yourlink">
-                                <div class="mouse">
-                                    <div class="wheel"></div>
+                            <div class="">
+                                <div class="mouse_scroll">
+
+                                    <div class="mouse">
+                                        <div class="wheel"></div>
+                                    </div>
+                                    <div>
+                                        <span class="m_scroll_arrows unu"></span>
+                                        <span class="m_scroll_arrows doi"></span>
+                                        <span class="m_scroll_arrows trei"></span>
+                                    </div>
                                 </div>
-                            </a>
-                        </div> -->
-                                <!-- <a class="colorlib-logo" href="index.html"><span class="logo-img" style="background-image: url(images/person_1.jpg);"></span>Beckham Muff</a> -->
                             </div>
-                            <!-- <a href="#" class="js-colorlib-nav-toggle colorlib-nav-toggle"><i></i></a> -->
                         </div>
                     </div>
                 </div>
@@ -78,7 +79,7 @@
             <section class="ftco-section about-section">
                 <div class="container">
                     <div class="row d-flex" data-scrollax-parent="true">
-                        <div class="col-md-4 author-img" style="background-image: url(images/me_portrait_low_res.jpg);"
+                        <div class="col-md-4 author-img" style="background-image: url(images/me_portrait.jpg);"
                             data-scrollax=" properties: { translateY: '-70%'}"></div>
                         <div class="col-md-2"></div>
                         <div class="col-md-6 wrap ftco-animate">
@@ -120,13 +121,19 @@
                         <div class="col-md-10">
                             <div class="profile ftco-animate">
                                 <h2 class="mb-4">📝 Bio</h2>
-                                <h5 class="mb-4">I love making things work in a way that is reliable, seamless &amp;
-                                    intuitive.</h5>
-                                <p>More text here</p>
+                                <h5 class="mb-4">I love making things work in a reliable, seamless and intuitive way.</h5>
+                                <p>Great systems are my passion. Sometimes great means jerryrigging something together and having Siri turn on the lights, before it was cool and easy.
+                                    Sometimes that means having a cron job run every 3 days that messages my mom on Facebook because I constantly forget to. <br>
+                                    Most of the time, that means creating something that will run & work for a long time reliably, and repair itself if anything comes up.
+                                    Nothing can and ever will be perfect, but the beauty is in the evolving. Striving for that perfect setup that will never fail,
+                                    that will always be up and running - but having hiccups along the way. I don't know everything but I'll tell you this;
+                                    I was initially bad at everything I've ever done. With time and practice, I became better and better and eventually I was capable of it.
+                                    I've learned my way through all the "ugh"s and desk-facepalms and if there's one thing for certain, I'll keep learning whatever I need to learn.
+                                </p>
                                 <div class="row my-5">
                                     <div class="col-md-6">
                                         <p><strong>Full Name:</strong> <span>Krisztian Nagy</span></p>
-                                        <p><strong>Currently in:</strong> <span>Bavaria, Germany 🇩🇪</span></p>
+                                        <p><strong>Currently location:</strong> <span>Bavaria, Germany 🇩🇪</span></p>
                                         <p><strong>Relocation:</strong> <span>Preferred/Possible</span></p>
                                     </div>
                                 </div>
@@ -157,8 +164,8 @@
                                         <p class="location">I originally decided to take a year off and travel this big blue earth. Shortly after the start of my journey
                                             I was presented with an opportunity to teach english as a foreign language to children in China. While it was not easy
                                             to settle into such a different culture, I am very happy with the experiences and knowledge that I got to collect along the way.
-                                            I got to learn how to communicate effectively with high language barriers, and how to teach &amp; convey information that is
-                                            understandable even for children. I was also exposed to people and cultures from all around the world, which FIXME
+                                            I got to learn how to communicate effectively even with high language barriers, and how to teach &amp; convey information that is
+                                            understandable even for children. Being exposed to people and cultures from all around the world let me 
                                         </p>
                                     </div>
                                     <div class="year">
@@ -367,7 +374,7 @@
                         </div>
                       </div>
                       <div class="block-3 d-md-flex ftco-animate" data-scrollax-parent="true">
-                        <a href="portfolio-single.html" class="image d-flex justify-content-center align-items-center" style="background-image: url('images/work-5.jpg'); " data-scrollax=" properties: { translateY: '-30%'}">
+                        <a href="portfolio-single.html" class="image d-flex justify-content-center align-items-center" style="background-image: url('images/me_hiking.jpg'); " data-scrollax=" properties: { translateY: '-30%'}">
                           <div class="icon d-flex text-center justify-content-center align-items-center">
                             <span class="icon-search"></span>
                           </div>
@@ -421,6 +428,15 @@
                             </p>
                         </div>
                     </div>
+                    <!-- START VISITOR COUNTER -->
+                    <div class="row mb-5 justify-content-center">
+                        <div class="col-md-5 text-center">
+                            <div class="ftco-footer-widget">
+                                <p class="h3 email" id="visitorCount">Total Visitors:
+                                </p>
+                            </div>
+                        </div>
+                    </div> <!-- END VISITOR COUNTER -->
                 </div>
             </footer>
 
@@ -445,6 +461,20 @@
     <script src="js/scrollax.min.js"></script>
     <script src="js/main.js"></script>
 
+    <!-- Script for the visitor counter -->
+    <script>
+        fetch("https://kim786bs8l.execute-api.us-east-1.amazonaws.com/prod/visitorcount")
+            .then(function (response) {
+                return response.json();
+            })
+            .then(function (myJson) {
+                console.log("Visitor Count: " + myJson.visitorCount);
+                document.querySelector("#visitorCount").innerHTML = "Total visitors: " + myJson.visitorCount;
+            })
+            .catch(function (error) {
+                console.log("Error: " + error);
+            });
+    </script>
 </body>
 
 </html>
