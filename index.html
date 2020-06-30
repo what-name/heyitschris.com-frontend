@@ -347,7 +347,7 @@
     <script>
         console.log("INCLUDE: this-is-fine-meme.png")
         var dev_env = false
-        if (dev_env == true) {
+        if (dev_env == false) {
             fetch("https://9rzsu486dk.execute-api.us-east-1.amazonaws.com/prod")
                 .then(function (response) {
                     return response.json()
